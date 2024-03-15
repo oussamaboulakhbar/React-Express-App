@@ -1,0 +1,6 @@
+ قبل مشاهدة هذا الكورس يجب عليك أولا معرفت جافاسكريبت وإكسبريس
+------------------ URL video ----------------------
+https://youtu.be/laMhqQdiCGw?si=tWaaWBeU4qKM6pyy
+
+nodemon : dawr dyalo howa auto restar.
+bcrypt : laibrary dawr dyalha kathachi liya lcode.
