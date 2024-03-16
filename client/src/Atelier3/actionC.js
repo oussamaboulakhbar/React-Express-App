@@ -1,8 +1,8 @@
 export const AddContact = (contact) => {
     return {type: "AddContact", payload: contact }
 }
-export const DeleteContact = (age) => {
-    return {type: "DeleteContact", payload: age }
+export const DeleteContact = (id) => {
+    return {type: "DeleteContact", payload: id }
 }
 export const EditeContact = (newContact) => {
     return {type: "EditeContact", payload: newContact }

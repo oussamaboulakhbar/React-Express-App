@@ -38,6 +38,7 @@ const Contacts = () => {
                     <table className="table table-striped">
                         <thead>
                             <tr>
+                                <th scope="col">Id</th>
                                 <th scope="col">Prenom</th>
                                 <th scope="col">Nom</th>
                                 <th scope="col">Age</th>
@@ -47,12 +48,14 @@ const Contacts = () => {
                         <tbody>
                             {contacts.map((contact, index) =>
                                 <tr key={index}>
+                                    <td>{contact._id}</td>
                                     <td>{contact.prenom}</td>
                                     <td>{contact.nom}</td>
                                     <td>{contact.age}</td>
+                                    
                                     <td>
                                         {/* ---------------- -----------------------Editer ---------------------------- */}
-                                        <NavLink to={`update/${contact.age}`}>
+                                        <NavLink to={`update/${contact._id}`}>
                                             <button
                                                 style={{ marginRight: "5px" }}
                                                 type="button"
@@ -72,7 +75,7 @@ const Contacts = () => {
                                         <button
                                             type="button"
                                             class="btn btn-danger"
-                                            onClick={() => dispatch(DeleteContact(contact.age))}>
+                                            onClick={() => dispatch(DeleteContact(contact._id))}>
                                             Supprimer -
                                         </button>
                                     </td>

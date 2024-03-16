@@ -9,7 +9,7 @@ const Home = () => {
                 <Routes>
                         <Route path="/" element={<Contacts/>} />
                         <Route path="ajouter" element={<AjouterContact/>} />
-                        <Route path="update/:age" element={<UpdateContact />} />
+                        <Route path="update/:_id" element={<UpdateContact />} />
                 </Routes>
             </BrowserRouter> 
         </div>

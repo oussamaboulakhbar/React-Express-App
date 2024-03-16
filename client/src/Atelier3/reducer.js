@@ -56,11 +56,13 @@ const reducer = (state = initialState, action) => {
 
 
         case "EditeContact":
-            const contact = state.infoContacts.find((item) => item.age == action.payload.age);
-            if (contact) {
-                contact.nom = action.payload.nom;
-                contact.prenom = action.payload.prenom;
-            }
+            const contact = state.infoContacts.find((item) => item._id == action.payload._id);
+
+            console.log(contact);
+            // if (contact) {
+            //     contact.nom = action.payload.nom;
+            //     contact.prenom = action.payload.prenom;
+            // }
             return state;
 
         case "DetailContact":

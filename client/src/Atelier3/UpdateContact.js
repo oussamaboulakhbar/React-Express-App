@@ -19,13 +19,12 @@ const UpdateContact =  () => {
             }
         };
         fetchData();
-    });
-    const age = useParams().age;
-    // console.log(`age : ${age}`);
-    const contact = useSelector(data => data.infoContacts.find((student) => student.age == age));
-    // console.log(contact)
+    },[]);
+    const id = useParams()._id;
+    const contact = useSelector(data => data.infoContacts.find((student) => student._id == id));
     const [inputnom, setNom] = useState(contact ? contact.nom : '');
     const [inputprenom, setPrenom] = useState(contact ? contact.prenom : '');
+    const [inputage, setAge] = useState(contact ? contact.age : '');
     const history = useNavigate();
     const  dispatch = useDispatch();
     
@@ -34,9 +33,10 @@ const UpdateContact =  () => {
     }
     
     const  submitHandler= (e)=>{
-        const newContact = {prenom: inputprenom, nom: inputnom,  age: age};
-        dispatch(EditeContact(newContact));
-        history('/');
+        const newContact = {prenom: inputprenom, nom: inputnom,  age: inputage};
+        console.log(newContact);
+        // dispatch(EditeContact(newContact));
+        // history('/');
     }
     return (
         <div className="container" style={{backgroundColor: '#f4f5f7'}}>
@@ -44,11 +44,15 @@ const UpdateContact =  () => {
             <form onSubmit={submitHandler}>
                 <div className="form-group">
                     <label for="prenom">Prenom :</label>
-                    <input type="text" className="form-control" id="prenom" placeholder="Enter Name" name="prenom" value={inputprenom} onChange={(e) => setPrenom(e.target.value)} required/>
+                    <input type="text" className="form-control" id="prenom" placeholder="Enter Prenom" name="prenom" value={inputprenom} onChange={(e) => setPrenom(e.target.value)} required/>
                 </div>
                 <div className="form-group">
                     <label for="name">Nom :</label>
-                    <input type="text" className="form-control" id="name" placeholder="Enter Name" name="nom" value={inputnom} onChange={(e) => setNom(e.target.value)} required/>
+                    <input type="text" className="form-control" id="name" placeholder="Enter Nom" name="nom" value={inputnom} onChange={(e) => setNom(e.target.value)} required/>
+                </div>
+                <div className="form-group">
+                    <label for="age">Age :</label>
+                    <input type="text" className="form-control" id="age" placeholder="Enter Age" name="age" value={inputage} onChange={(e) => setAge(e.target.value)} required/>
                 </div>
                 <button type="submit" className="btn btn-success my-2">Envoyer</button>
             </form>
