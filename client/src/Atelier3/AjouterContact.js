@@ -39,16 +39,16 @@ const AjouterContact = () => {
             <form onSubmit={handleSubmit}>
                 <div className="form-group">
                     <label for="prenom">Prenom :</label>
-                    <input type="text" className="form-control" id="prenom" placeholder="Enter Name" name="prenom" value={inputprenom} onChange={handlePrenom} required/>
+                    <input type="text" className="form-control" id="prenom" placeholder="Enter Prenom" name="prenom" value={inputprenom} onChange={handlePrenom} required/>
                 </div>
                 <div className="form-group">
                     <label for="name">Nom :</label>
-                    <input type="text" className="form-control" id="name" placeholder="Enter Name" name="nom" value={inputnom} onChange={handleNom} required/>
+                    <input type="text" className="form-control" id="name" placeholder="Enter Nom" name="nom" value={inputnom} onChange={handleNom} required/>
                 </div>
                 
                 <div className="form-group">
                     <label for="age">Age :</label>
-                    <input type="text" className="form-control" id="age" placeholder="Enter Email" name="age" value={inputage} onChange={handleAge} required />
+                    <input type="text" className="form-control" id="age" placeholder="Enter Age" name="age" value={inputage} onChange={handleAge} required />
                 </div>
                 <button type="submit" className="btn btn-success my-2">Envoyer</button>
             </form>

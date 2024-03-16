@@ -53,16 +53,21 @@ const reducer = (state = initialState, action) => {
                     // Handle error if needed
                     console.error('Error adding contact:', error);
                 });
+            return state
 
 
         case "EditeContact":
-            const contact = state.infoContacts.find((item) => item._id == action.payload._id);
-
-            console.log(contact);
-            // if (contact) {
-            //     contact.nom = action.payload.nom;
-            //     contact.prenom = action.payload.prenom;
-            // }
+            axios.put(`http://localhost:3001/students/update/${action.payload2}`, action.payload1)
+            .then(response => {
+                // Handle success if needed
+                console.log(response.data);
+            })
+            .catch(error => {
+                // Handle error if needed
+                console.error('Error adding contact:', error);
+            });
+            console.log('action.payload2 :',action.payload2)
+            console.log('action.payload1 :',action.payload1)
             return state;
 
         case "DetailContact":

@@ -60,7 +60,7 @@ export const createStudents = async (request, response) => {
 export const updateStudents = async (request, response) => {
   try {
     const id = request.params.id;
-    const data = request.body;
+    const data = request.body; // hna 
     await updateStudentById(id, data);
     response.send(`student with id ${id} has been updated.... `);
   } catch (err) {

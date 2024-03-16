@@ -7,6 +7,16 @@ import { fetchDataSuccess, fetchDataFailure } from "./actionC.js";
 
 
 const UpdateContact =  () => {
+    console.log()
+    const id = useParams()._id;
+    // console.log('id',id)
+    const contact = useSelector(data => data.infoContacts.find((student) => student._id == id));
+    console.log('contact render :',contact)
+    const [inputnom, setNom] = useState(contact ? contact.nom : '');
+    const [inputprenom, setPrenom] = useState(contact ? contact.prenom : '');
+    const [inputage, setAge] = useState(contact ? contact.age : '');
+    const history = useNavigate();
+    const  dispatch = useDispatch();
     useEffect(() => {
         const fetchData = async () => {
             try {
@@ -19,26 +29,27 @@ const UpdateContact =  () => {
             }
         };
         fetchData();
+        console.log('useEffect 1 :' ,contact)
     },[]);
-    const id = useParams()._id;
-    const contact = useSelector(data => data.infoContacts.find((student) => student._id == id));
-    const [inputnom, setNom] = useState(contact ? contact.nom : '');
-    const [inputprenom, setPrenom] = useState(contact ? contact.prenom : '');
-    const [inputage, setAge] = useState(contact ? contact.age : '');
-    const history = useNavigate();
-    const  dispatch = useDispatch();
+    useEffect(() => {
+        if (contact) {
+            setNom(contact.nom);
+            setPrenom(contact.prenom);
+            setAge(contact.age);
+        }
+        console.log('useEffect 2 :' ,contact)
+    }, [contact]);
     
-    if (!contact) {
-        return <div><h1>Contact not found</h1></div>;
-    }
     
     const  submitHandler= (e)=>{
+        e.preventDefault();
         const newContact = {prenom: inputprenom, nom: inputnom,  age: inputage};
-        console.log(newContact);
-        // dispatch(EditeContact(newContact));
-        // history('/');
+        console.log('newContact',newContact);
+        dispatch(EditeContact(newContact,id));
+        history('/');
     }
     return (
+        contact &&  (
         <div className="container" style={{backgroundColor: '#f4f5f7'}}>
             <h1>Update Contact </h1><hr></hr>
             <form onSubmit={submitHandler}>
@@ -57,7 +68,8 @@ const UpdateContact =  () => {
                 <button type="submit" className="btn btn-success my-2">Envoyer</button>
             </form>
         </div>
-    
+        
+    )
     )
     
 }
