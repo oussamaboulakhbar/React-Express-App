@@ -2,9 +2,11 @@ import { Routes, Route, BrowserRouter  } from "react-router-dom";
 import Contacts from "./contacts.js";
 import AjouterContact from "./AjouterContact.js";
 import UpdateContact from "./UpdateContact.js";
+import Nav from "../partials/nav.js";
 const Home = () => {
     return (
         <div>
+            
             <BrowserRouter>
                 <Routes>
                         <Route path="/" element={<Contacts/>} />
