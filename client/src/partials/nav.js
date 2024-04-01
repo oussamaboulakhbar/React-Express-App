@@ -8,7 +8,7 @@ const Nav = () => {
                     {/* <Link to='/'> Home</Link> */}
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link active" href='/ajouter'>Ajouter</a>
+                    <a class="nav-link active" href='/ajouter'>Add</a>
                     {/* <Link to='/ajouter'> Ajouter</Link> */}
                 </li>
                 

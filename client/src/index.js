@@ -1,6 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import Home from "./Atelier3/Home.js";
+import Home from "./Atelier3/home.js";
 import reducer from "./Atelier3/reducer.js";
 import { Provider } from "react-redux";
 import { legacy_createStore } from "redux";

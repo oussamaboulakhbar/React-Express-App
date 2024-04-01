@@ -5,14 +5,17 @@ import connectToDatabase from "./db/connect.js";
 connectToDatabase();
 
 export const Students = mongoose.model("Students", {
-  prenom: {
+  first_name: {
     type: String,
   },
-  nom: {
+  last_name: {
     type: String,
   },
   age: {
     type: Number,
+  },
+  gender: {
+    type: String,
   },
 });
 
