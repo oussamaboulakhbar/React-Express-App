@@ -15,33 +15,32 @@ const Contacts = () => {
     const [search, setSearch] = useState("");
     const [order, setOrder] = useState("ASC")
     const contacts = useSelector(data => data.infoContacts);
+    console.log(`contacts : ${contacts}`);
     const dispatch = useDispatch();
-
+    async function fetchData() {
+        try {
+            const response = await axios.get('http://localhost:3001/students');
+            dispatch(fetchDataSuccess(response.data));
+        } catch (error) {
+            console.error('Error fetching data:', error);
+            dispatch(fetchDataFailure(error.message));
+        }
+    };
     useEffect(() => {
-        const fetchData = async () => {
-            try {
-                const response = await axios.get('http://localhost:3001/students');
-                dispatch(fetchDataSuccess(response.data));
-            } catch (error) {
-                console.error('Error fetching data:', error);
-                dispatch(fetchDataFailure(error.message));
-            }
-        };
         fetchData();
-    });
+    }, []);
     const sorting = (col) => {
         if (order === "ASC") {
-            const sorted = [...contacts].sort((a, b) => 
-            a[col].toLowerCase() > b[col].toLowerCase() ? 1 : -1)
+            const sorted = [...contacts].sort((a, b) =>
+                a[col].toLowerCase() > b[col].toLowerCase() ? 1 : -1)
             setOrder("DESC")
             return dispatch(fetchDataSuccess(sorted))
         } else {
-            const sortDesc = [...contacts].sort((a, b) =>  
+            const sortDesc = [...contacts].sort((a, b) =>
                 a[col].toLowerCase() < b[col].toLowerCase() ? 1 : -1)
             setOrder("ASC")
             return dispatch(fetchDataSuccess(sortDesc));
         }
-        
     }
     // ! ------------------------------------Return----------------------------------
     return (
@@ -51,13 +50,13 @@ const Contacts = () => {
                 <hr></hr>
                 <h1>Contact list </h1><hr></hr>
                 {/* ---------------- -----------------------Ajouter ---------------------------- */}
-                    <NavLink to="ajouter">
-                        <button
-                            style={{ marginLeft: "5px", marginBottom: "10px" }}
-                            className="btn btn-success"
-                        >Add Contact +
-                        </button>
-                    </NavLink>
+                <NavLink to="ajouter">
+                    <button
+                        style={{ marginLeft: "5px", marginBottom: "10px" }}
+                        className="btn btn-success"
+                    >Add Contact +
+                    </button>
+                </NavLink>
                 <Form>
                     <InputGroup>
                         <Form.Control value={search} onChange={(e) => setSearch(e.target.value)} placeholder='Search by name...' />
@@ -76,13 +75,11 @@ const Contacts = () => {
                             </tr>
                         </thead>
                         <tbody>
-                            {contacts
-                                //! _____Search_____
-                                .filter((contact) => {
-                                    return search.toLowerCase() === ''
-                                        ? contact
-                                        : contact.first_name.toLowerCase().includes(search);
-                                })
+                            {contacts?.filter((contact) => {
+                                return search.toLowerCase() === ''
+                                    ? contact
+                                    : contact.first_name.toLowerCase().includes(search);
+                            })
                                 .map((contact, index) =>
                                     <tr key={index}>
                                         <td>{contact._id}</td>
@@ -105,15 +102,14 @@ const Contacts = () => {
                                                 <button
                                                     style={{ marginRight: "5px" }}
                                                     type="button"
-                                                    className="btn btn-warning
-                                                ">
+                                                    className="btn btn-warning">
                                                     Detail
                                                 </button>
                                             </NavLink>
                                             {/* ---------------- -----------------------Supprimer ---------------------------- */}
                                             <button
                                                 type="button"
-                                                class="btn btn-danger"
+                                                className="btn btn-danger"
                                                 onClick={() => dispatch(DeleteContact(contact._id))}>
                                                 Delete
                                             </button>

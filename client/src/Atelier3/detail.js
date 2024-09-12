@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from "react-redux";
-import { useState, useEffect } from "react";
-import { useNavigate, useParams } from "react-router-dom"
+import { useEffect } from "react";
+import { useParams } from "react-router-dom"
 import axios from "axios";
 import { fetchDataSuccess, fetchDataFailure } from "./actionC.js";
 import Nav from "../partials/nav.js";
