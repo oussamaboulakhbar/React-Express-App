@@ -1,21 +1,16 @@
-import express from "express";
-import { v4 as uuidv4 } from "uuid";
+
 import {
-  Students,
   findStudents,
   findStudentsById,
   deleteStudentsById,
   updateStudentById,
   addStudent,
 } from "../models/students.js";
-import mongoose from "mongoose";
 
 // * Get students:
 export const getStudents = async (request, response) => {
   const students = await findStudents();
-  // return students;
   response.send(students);
-  // console.log(students);
 };
 
 // * Get student by id :
@@ -60,7 +55,7 @@ export const createStudents = async (request, response) => {
 export const updateStudents = async (request, response) => {
   try {
     const id = request.params.id;
-    const data = request.body; // hna 
+    const data = request.body; 
     await updateStudentById(id, data);
     response.send(`student with id ${id} has been updated.... `);
   } catch (err) {

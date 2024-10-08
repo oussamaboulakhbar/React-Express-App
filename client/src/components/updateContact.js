@@ -11,7 +11,6 @@ import { Footer } from "../partials/footer.js";
 const UpdateContact = () => {
     console.log()
     const id = useParams()._id;
-    // console.log('id',id)
     const contact = useSelector(data => data.infoContacts.find((student) => student._id == id));
     console.log('contact render :', contact)
     const [inputnom, setNom] = useState(contact ? contact.last_name : '');
@@ -97,17 +96,3 @@ const UpdateContact = () => {
 
 }
 export default UpdateContact;
-/*
-<div>
-            <h1>Update de Contact </h1><hr></hr>
-            <form  onSubmit={submitHandler}>
-                Nom: <input type="text" value={name} onChange={(e) => setName(e.target.value)} required /> 
-                Email: <input type="text" value={email} onChange={(e) => setEmail(e.target.value)} required /> 
-                <input 
-                        type="submit"
-                        style={{marginLeft: "5px"}} 
-                        className="btn btn-success" 
-                        value="Update Contact"                            
-                />  
-            </form>
-        </div> */

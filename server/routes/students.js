@@ -1,5 +1,4 @@
 import express from "express";
-// import {getStudents, getStudent, deleteStudents, addStudents, updateStudents } from "../controllers/students.js";
 import { getStudents, getStudent, deleteStudents, createStudents, updateStudents} from "../controllers/students.js";
 
 const router = express.Router();
