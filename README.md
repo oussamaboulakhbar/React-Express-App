@@ -21,3 +21,32 @@ This application is built with React for the client-side and Node.js with Expres
     ├── routes 
     └── index.js 
     └── package.json
+```
+## Installation
+1. Clone the repository:
+   ```bash
+   git clone <repository-url>
+   ```
+2.Install dependencies for both client and server:
+   ```bash
+    cd client
+    npm install
+    cd ../server
+    npm install
+```
+## Running the Application
+1. Start the server:
+   ```bash
+    cd server
+    npm start
+   ```
+2. Start the client:
+   ```bash
+    cd client
+    npm start
+   ```
+## Technologies Used
+- **Front-end**: React, CSS, Tailwindcss.
+- **Back-end**: Node.js, Express.
+- **Database**: MongoDB.
+
