@@ -1,3 +1,4 @@
+```bash
 ├── client 
 │   ├── public 
 │   ├── src 
