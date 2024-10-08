@@ -25,7 +25,7 @@ This application is built with React for the client-side and Node.js with Expres
 ## Installation
 1. Clone the repository:
    ```bash
-   git clone <repository-url>
+   git clone https://github.com/oussamaboulakhbar/React-Express-App.git
    ```
 2.Install dependencies for both client and server:
    ```bash
